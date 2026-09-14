@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
-<title>Bader TI-30XS MultiView — Exact Keypad Labels</title>
+<title>Bader TI-30XS MultiView — Resizable</title>
 <style>
 :root{
   --body:#46525a;
@@ -19,6 +19,13 @@
 }
 *{box-sizing:border-box}
 body{margin:0;background:#eef1f3;font-family:Arial,Helvetica,sans-serif;display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:8px;user-select:none}
+.app-shell{display:flex;flex-direction:column;align-items:center;gap:8px;width:100%}
+.resize-controls{position:sticky;top:8px;z-index:60;display:flex;align-items:center;gap:5px;background:#ffffffeb;border:1px solid #cbd1d5;border-radius:10px;padding:5px 7px;box-shadow:0 3px 12px #0002;font:700 13px Arial,Helvetica,sans-serif}
+.resize-controls button{width:30px;height:28px;border:1px solid #aeb6bc;border-radius:7px;background:#fff;color:#263038;font-size:18px;font-weight:800;line-height:1;cursor:pointer}
+.resize-controls button:hover{background:#f0f3f5}.resize-controls button:active{transform:translateY(1px)}
+.resize-controls select{height:28px;border:1px solid #aeb6bc;border-radius:7px;background:#fff;color:#263038;font-weight:700;padding:0 5px;cursor:pointer}
+.resize-controls .label{font-size:12px;color:#59636a;margin-right:1px}
+.calc{zoom:var(--calc-scale,.75)}
 .calc{
   width:min(536px,100%);
   background:linear-gradient(180deg,var(--body) 0%,var(--body2) 100%);
@@ -89,11 +96,28 @@ body{margin:0;background:#eef1f3;font-family:Arial,Helvetica,sans-serif;display:
 .footer,.notice{display:none}
 .menu-wrap{position:fixed;inset:0;background:#0005;display:none;align-items:center;justify-content:center;padding:20px;z-index:30}.menu-wrap.show{display:flex}.menu{width:min(470px,94vw);background:#f4f5ef;color:#111;border:5px solid #303a40;font-family:"Courier New",monospace}.menu-title{background:#5f6669;color:#fff;padding:7px 10px;font-size:20px;font-weight:800}.menu-body{padding:10px;font-size:18px}.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:5px 0 11px}.menu button{font:700 16px "Courier New",monospace;padding:7px;background:#fff;border:2px solid #555}.menu button.sel{background:#111;color:#fff}.menu-list button{width:100%;text-align:left;margin:3px 0}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#222;color:#fff;padding:8px 12px;border-radius:7px;display:none;z-index:40}.toast.show{display:block}
 @media(max-width:560px){
- body{padding:0;background:#46525a}.calc{width:100%;min-height:100vh;border-radius:0;padding:10px 12px 16px}.brand{height:65px}.brand .name{font-size:24px}.brand .model{font-size:35px}.brand .science{font-size:23px}.screen{height:200px;margin:0 2px 14px}.lcd{padding:23px 12px 8px}.history{height:108px;font-size:14px}.entry{font-size:24px}.result{font-size:25px}.upper{grid-template-columns:1fr 155px;gap:7px}.utility{gap:6px}.utility button{height:62px;font-size:18px;border-width:3px}.utility button small,.key small{font-size:11px}.dpad{width:150px;height:132px}.dpad button{width:61px;height:54px}.dpad .up,.dpad .down{left:44px}.dpad .left,.dpad .right{top:39px}.dpad .center{left:58px;top:49px;width:34px;height:34px}.keypad{gap:6px}.key{height:62px;font-size:19px;border-width:3px}.key.num{font-size:31px}.key.op{font-size:24px}.key.var-key{font-size:12px}
+ body{padding:8px;background:#eef1f3}.calc{width:min(536px,100%);min-height:0;border-radius:18px;padding:10px 12px 16px}.brand{height:65px}.brand .name{font-size:24px}.brand .model{font-size:35px}.brand .science{font-size:23px}.screen{height:200px;margin:0 2px 14px}.lcd{padding:23px 12px 8px}.history{height:108px;font-size:14px}.entry{font-size:24px}.result{font-size:25px}.upper{grid-template-columns:1fr 155px;gap:7px}.utility{gap:6px}.utility button{height:62px;font-size:18px;border-width:3px}.utility button small,.key small{font-size:11px}.dpad{width:150px;height:132px}.dpad button{width:61px;height:54px}.dpad .up,.dpad .down{left:44px}.dpad .left,.dpad .right{top:39px}.dpad .center{left:58px;top:49px;width:34px;height:34px}.keypad{gap:6px}.key{height:62px;font-size:19px;border-width:3px}.key.num{font-size:31px}.key.op{font-size:24px}.key.var-key{font-size:12px}
 }
 </style>
 </head>
 <body>
+<div class="app-shell">
+  <div class="resize-controls" aria-label="Calculator size controls">
+    <span class="label">Size</span>
+    <button type="button" id="sizeDown" title="Make calculator smaller" aria-label="Make calculator smaller">−</button>
+    <select id="sizeSelect" aria-label="Calculator size">
+      <option value="0.50">50%</option>
+      <option value="0.60">60%</option>
+      <option value="0.70">70%</option>
+      <option value="0.75" selected>75%</option>
+      <option value="0.80">80%</option>
+      <option value="0.90">90%</option>
+      <option value="1.00">100%</option>
+      <option value="1.10">110%</option>
+      <option value="1.25">125%</option>
+    </select>
+    <button type="button" id="sizeUp" title="Make calculator larger" aria-label="Make calculator larger">+</button>
+  </div>
 <div class="calc">
   <div class="brand"><div class="name">Bader</div><div class="model">TI-30XS<span class="science">MultiView</span></div></div>
   <div class="screen">
@@ -105,12 +129,24 @@ body{margin:0;background:#eef1f3;font-family:Arial,Helvetica,sans-serif;display:
   <div class="footer">Bader TI-30XS MultiView classroom calculator</div>
   <div class="notice">Primary function = large white label • Green label = press 2nd first</div>
 </div>
+</div>
 <div class="menu-wrap" id="menu"><div class="menu"><div class="menu-title" id="menuTitle"></div><div class="menu-body" id="menuBody"></div></div></div>
 <div class="toast" id="toast"></div>
 <!-- UI v2: keypad text matched to the supplied TI-30XS reference -->
 <script>
 (()=>{
 'use strict';
+const SCALE_KEY='bader-ti30-ui-scale';
+const scaleChoices=[.50,.60,.70,.75,.80,.90,1.00,1.10,1.25];
+const calcEl=document.querySelector('.calc'), sizeSelect=document.getElementById('sizeSelect'), sizeDown=document.getElementById('sizeDown'), sizeUp=document.getElementById('sizeUp');
+let uiScale=.75;
+try{const saved=parseFloat(localStorage.getItem(SCALE_KEY));if(scaleChoices.includes(saved))uiScale=saved}catch{}
+function applyScale(v){uiScale=v;document.documentElement.style.setProperty('--calc-scale',String(v));if(sizeSelect)sizeSelect.value=v.toFixed(2);try{localStorage.setItem(SCALE_KEY,String(v))}catch{}}
+function stepScale(dir){let i=scaleChoices.findIndex(v=>Math.abs(v-uiScale)<.001);if(i<0)i=3;i=Math.max(0,Math.min(scaleChoices.length-1,i+dir));applyScale(scaleChoices[i])}
+sizeSelect?.addEventListener('change',()=>applyScale(parseFloat(sizeSelect.value)));
+sizeDown?.addEventListener('click',()=>stepScale(-1));
+sizeUp?.addEventListener('click',()=>stepScale(1));
+applyScale(uiScale);
 const $=s=>document.querySelector(s), entryEl=$('#entry'), resultEl=$('#result'), historyEl=$('#history');
 const menu=$('#menu'), menuTitle=$('#menuTitle'), menuBody=$('#menuBody');
 const clone=o=>JSON.parse(JSON.stringify(o));
