@@ -283,6 +283,169 @@ button{touch-action:manipulation}
 <div class="menu-wrap" id="menu"><div class="menu"><div class="menu-title" id="menuTitle"></div><div class="menu-body" id="menuBody"></div></div></div>
 <div class="toast" id="toast"></div>
 <!-- UI v6: premium visual polish; calculator logic preserved from v5 -->
+<div id="manualOverlay" class="manual-overlay" aria-hidden="true">
+  <section class="manual-panel" role="dialog" aria-modal="true" aria-labelledby="manualTitle">
+    <div class="manual-head">
+      <h2 id="manualTitle">Bader TI-30XS User Manual</h2>
+      <button id="manualClose" type="button">Close</button>
+    </div>
+    <div class="manual-body">
+      <p>This manual explains the browser calculator included on this page. It is designed to follow the documented TI-30XS MultiView feature set as closely as practical in a web interface.</p>
+
+      <div class="manual-note"><strong>Tip:</strong> Green labels are secondary functions. Press <strong>2nd</strong>, then the corresponding key.</div>
+
+      <div class="manual-toc">
+        <a href="#m-start">Getting started</a>
+        <a href="#m-modes">Modes</a>
+        <a href="#m-editing">Editing & history</a>
+        <a href="#m-fractions">Fractions & percentages</a>
+        <a href="#m-powers">Powers, roots & logs</a>
+        <a href="#m-trig">Trig & angle tools</a>
+        <a href="#m-prob">Probability & random</a>
+        <a href="#m-stats">DATA & statistics</a>
+        <a href="#m-table">Function table</a>
+        <a href="#m-k">Constant K</a>
+        <a href="#m-memory">Variables & memory</a>
+        <a href="#m-errors">Errors</a>
+      </div>
+
+      <h3 id="m-start">1. Getting started</h3>
+      <p>Use the on-screen keypad or your computer keyboard. Press <strong>ENTER</strong> to evaluate an expression. The calculator keeps recent history so previous entries can be recalled with the up/down navigation controls.</p>
+      <ul>
+        <li><strong>2nd</strong> activates the green secondary label.</li>
+        <li><strong>ON</strong> wakes the calculator.</li>
+        <li><strong>2nd + ON</strong> turns the display off while retaining state.</li>
+        <li>The browser version also includes an automatic power-down timer of about 5 minutes.</li>
+        <li><strong>2nd + +</strong> increases LCD contrast and <strong>2nd + −</strong> decreases it.</li>
+      </ul>
+
+      <h3 id="m-modes">2. Modes</h3>
+      <p>Press <strong>mode</strong> to choose:</p>
+      <table>
+        <tr><th>Setting</th><th>Options</th><th>Purpose</th></tr>
+        <tr><td>Angle</td><td>DEG, RAD, GRAD</td><td>Controls trig input and output angle units.</td></tr>
+        <tr><td>Notation</td><td>NORM, SCI, ENG</td><td>Controls numeric result display.</td></tr>
+        <tr><td>Decimal</td><td>FLOAT or 0–9</td><td>Controls the number of decimal places shown.</td></tr>
+        <tr><td>Display</td><td>CLASSIC, MATHPRINT</td><td>Classic uses a single-line style; MathPrint uses textbook-style structures.</td></tr>
+      </table>
+      <p><strong>2nd + mode</strong> quits back to the Home screen.</p>
+
+      <h3 id="m-editing">3. Editing, cursor movement, history</h3>
+      <ul>
+        <li>Arrow keys move through the current expression.</li>
+        <li><strong>2nd + left/right</strong> jumps to the beginning/end.</li>
+        <li><strong>delete</strong> deletes at the cursor.</li>
+        <li><strong>2nd + delete</strong> toggles Insert mode.</li>
+        <li><strong>clear</strong> clears the current entry.</li>
+        <li>Up/down navigates stored history when not moving inside a fraction/template.</li>
+      </ul>
+
+      <h3 id="m-fractions">4. Fractions, mixed numbers & percentages</h3>
+      <ul>
+        <li><strong>n/d</strong> inserts a fraction template.</li>
+        <li><strong>2nd + n/d</strong> inserts a mixed-number template.</li>
+        <li><strong>2nd + ×10ⁿ</strong> converts between improper and mixed fraction display when applicable.</li>
+        <li><strong>f↔d</strong> toggles fraction/decimal answers.</li>
+        <li>The white <strong>↔</strong> answer-toggle key also switches exact/decimal forms when available.</li>
+        <li><strong>2nd + (</strong> applies percent <code>%</code>.</li>
+        <li><strong>2nd + )</strong> converts to percent.</li>
+      </ul>
+      <p>Fractions are simplified automatically. Common exact square-root and π forms are preserved in MathPrint when possible.</p>
+
+      <h3 id="m-powers">5. Powers, roots, inverses, logs</h3>
+      <table>
+        <tr><th>Function</th><th>Key</th></tr>
+        <tr><td>Square</td><td>x²</td></tr>
+        <tr><td>Square root</td><td>2nd + x²</td></tr>
+        <tr><td>Power</td><td>^</td></tr>
+        <tr><td>nth root</td><td>2nd + ^</td></tr>
+        <tr><td>Reciprocal</td><td>x⁻¹</td></tr>
+        <tr><td>Common log</td><td>log</td></tr>
+        <tr><td>10ˣ</td><td>2nd + log</td></tr>
+        <tr><td>Natural log</td><td>ln</td></tr>
+        <tr><td>eˣ</td><td>2nd + ln</td></tr>
+        <tr><td>π</td><td>π</td></tr>
+        <tr><td>Scientific notation entry</td><td>×10ⁿ</td></tr>
+      </table>
+
+      <h3 id="m-trig">6. Trigonometry, hyperbolics & angle tools</h3>
+      <ul>
+        <li><strong>sin, cos, tan</strong> use the active angle mode.</li>
+        <li><strong>2nd + sin/cos/tan</strong> gives inverse trig.</li>
+        <li><strong>2nd + π</strong> toggles HYP; then use sin/cos/tan for hyperbolic functions.</li>
+        <li>Use <strong>2nd + prb</strong> to open the Angle menu.</li>
+      </ul>
+      <p>The Angle menu includes degree, minute, second, radian, gradian modifiers, DMS conversion, and rectangular/polar coordinate conversion.</p>
+
+      <h3 id="m-prob">7. Probability & random numbers</h3>
+      <p>Press <strong>prb</strong> for:</p>
+      <ul>
+        <li><strong>nPr</strong> permutations</li>
+        <li><strong>nCr</strong> combinations</li>
+        <li><strong>!</strong> factorial</li>
+        <li><strong>RAND</strong> submenu with <code>rand</code> and <code>randint(</code></li>
+      </ul>
+      <p>You can store a nonnegative integer seed to <code>rand</code> from the Store menu to make the browser's random sequence repeatable.</p>
+
+      <h3 id="m-stats">8. DATA editor & statistics</h3>
+      <p>Press <strong>data</strong> to edit L1, L2, and L3. Each list can hold up to 42 items. The editor includes individual list clearing, Clear ALL, and formula controls.</p>
+      <p>Press <strong>2nd + data</strong> for STATS:</p>
+      <ul>
+        <li><strong>1-Var Stats</strong>: n, x̄, Sx, σx, Σx, Σx², MinX, Q1, Med, Q3, MaxX.</li>
+        <li><strong>2-Var Stats</strong>: x/y means, sample/population deviations, sums, Σxy, linear-regression slope a, intercept b, correlation r, and prediction tools.</li>
+        <li><strong>StatVars</strong> appears after a statistics calculation.</li>
+      </ul>
+
+      <h3 id="m-table">9. Function table</h3>
+      <p>Press <strong>table</strong> to define a function in x.</p>
+      <ul>
+        <li><strong>Start</strong> sets the first x value.</li>
+        <li><strong>Step</strong> sets the increment and cannot be 0.</li>
+        <li><strong>Auto</strong> generates a series automatically.</li>
+        <li><strong>Ask-x</strong> lets you enter specific x values manually.</li>
+      </ul>
+
+      <h3 id="m-k">10. Constant K</h3>
+      <p>Press <strong>2nd + ÷</strong> to define Constant K. Enter an operation such as <code>*2+3</code>. After K is enabled, pressing ENTER applies the stored operation to the current entry or last answer. Use the K menu again to turn it off or change it.</p>
+
+      <h3 id="m-memory">11. Variables, Ans, Store & Recall</h3>
+      <ul>
+        <li>The calculator has variables x, y, z, t, a, b, c.</li>
+        <li><strong>vars</strong> inserts a variable.</li>
+        <li><strong>2nd + vars</strong> opens Clear Var.</li>
+        <li><strong>sto→</strong> stores the current answer.</li>
+        <li><strong>2nd + sto→</strong> opens Recall Var.</li>
+        <li><strong>2nd + (−)</strong> inserts Ans.</li>
+        <li><strong>2nd + 0</strong> opens Reset.</li>
+      </ul>
+
+      <h3 id="m-errors">12. Common errors</h3>
+      <table>
+        <tr><th>Error</th><th>Meaning</th></tr>
+        <tr><td>DIVIDE BY 0</td><td>Division by zero.</td></tr>
+        <tr><td>DOMAIN</td><td>An input is outside the allowed domain, such as √(-1), log(0), invalid inverse trig input, or invalid factorial/permutation input.</td></tr>
+        <tr><td>SYNTAX</td><td>The expression or function arguments are malformed.</td></tr>
+        <tr><td>STAT</td><td>Statistical data is missing or inconsistent.</td></tr>
+        <tr><td>FRQ DOMAIN</td><td>A frequency is outside the accepted range.</td></tr>
+        <tr><td>DIM MISMATCH</td><td>List/formula dimensions do not match.</td></tr>
+        <tr><td>FORMULA</td><td>A list formula is invalid or circular.</td></tr>
+        <tr><td>INVALID FUNCTION</td><td>The function table expression is invalid.</td></tr>
+        <tr><td>MEMORY LIMIT</td><td>An operation exceeds a supported size/limit.</td></tr>
+      </table>
+
+      <h3>13. Browser-only extras</h3>
+      <ul>
+        <li>Size controls from 50% to 125%.</li>
+        <li>Multiple visual skins.</li>
+        <li>Keyboard input support.</li>
+        <li>The manual you are reading is built directly into this HTML file.</li>
+      </ul>
+
+      <div class="manual-note"><strong>Compatibility note:</strong> This is a browser implementation based on documented TI-30XS behavior. It is not a cycle-accurate hardware emulator, so some internal details such as the exact physical calculator random-number sequence may differ.</div>
+    </div>
+  </section>
+</div>
+
 <script>
 (()=>{
 'use strict';
@@ -791,13 +954,13 @@ document.addEventListener('keydown',e=>{if(menu.classList.contains('show')){
   if(e.key==='Escape'||e.key==='Backspace'||e.key==='Delete'){hideMenu();e.preventDefault();return}
   return
 }if(e.key==='Backspace'){backspace();resetAPD();e.preventDefault();return}const map={Enter:'enter',Delete:'delete',ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down','*':'×','/':'÷','-':'−','+':'+','(':'(',')':')','.':'.'};if(/^\d$/.test(e.key)){doKey(e.key);e.preventDefault()}else if(map[e.key]){const k=map[e.key];if(['left','right','up','down'].includes(k))({left:moveLeft,right:moveRight,up:moveUp,down:moveDown})[k]();else doKey(k);e.preventDefault()}});
-// Bader TI-30XS v21: v20 launch candidate plus built-in searchable-style user manual overlay.
+// Bader TI-30XS v23: manual popup initialization fixed; manual markup now loads before calculator script.
 
 const manualBtn=document.getElementById('manualBtn');
 const manualOverlay=document.getElementById('manualOverlay');
 const manualClose=document.getElementById('manualClose');
-function openManual(){manualOverlay.classList.add('show');manualOverlay.setAttribute('aria-hidden','false');manualClose.focus()}
-function closeManual(){manualOverlay.classList.remove('show');manualOverlay.setAttribute('aria-hidden','true');manualBtn?.focus()}
+function openManual(){if(!manualOverlay)return;manualOverlay.classList.add('show');manualOverlay.setAttribute('aria-hidden','false');manualClose?.focus()}
+function closeManual(){if(!manualOverlay)return;manualOverlay.classList.remove('show');manualOverlay.setAttribute('aria-hidden','true');manualBtn?.focus()}
 manualBtn?.addEventListener('click',openManual);
 manualClose?.addEventListener('click',closeManual);
 manualOverlay?.addEventListener('click',e=>{if(e.target===manualOverlay)closeManual()});
@@ -806,169 +969,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&manualOverlay?.clas
 render();resetAPD();
 })();
 </script>
-
-<div id="manualOverlay" class="manual-overlay" aria-hidden="true">
-  <section class="manual-panel" role="dialog" aria-modal="true" aria-labelledby="manualTitle">
-    <div class="manual-head">
-      <h2 id="manualTitle">Bader TI-30XS User Manual</h2>
-      <button id="manualClose" type="button">Close</button>
-    </div>
-    <div class="manual-body">
-      <p>This manual explains the browser calculator included on this page. It is designed to follow the documented TI-30XS MultiView feature set as closely as practical in a web interface.</p>
-
-      <div class="manual-note"><strong>Tip:</strong> Green labels are secondary functions. Press <strong>2nd</strong>, then the corresponding key.</div>
-
-      <div class="manual-toc">
-        <a href="#m-start">Getting started</a>
-        <a href="#m-modes">Modes</a>
-        <a href="#m-editing">Editing & history</a>
-        <a href="#m-fractions">Fractions & percentages</a>
-        <a href="#m-powers">Powers, roots & logs</a>
-        <a href="#m-trig">Trig & angle tools</a>
-        <a href="#m-prob">Probability & random</a>
-        <a href="#m-stats">DATA & statistics</a>
-        <a href="#m-table">Function table</a>
-        <a href="#m-k">Constant K</a>
-        <a href="#m-memory">Variables & memory</a>
-        <a href="#m-errors">Errors</a>
-      </div>
-
-      <h3 id="m-start">1. Getting started</h3>
-      <p>Use the on-screen keypad or your computer keyboard. Press <strong>ENTER</strong> to evaluate an expression. The calculator keeps recent history so previous entries can be recalled with the up/down navigation controls.</p>
-      <ul>
-        <li><strong>2nd</strong> activates the green secondary label.</li>
-        <li><strong>ON</strong> wakes the calculator.</li>
-        <li><strong>2nd + ON</strong> turns the display off while retaining state.</li>
-        <li>The browser version also includes an automatic power-down timer of about 5 minutes.</li>
-        <li><strong>2nd + +</strong> increases LCD contrast and <strong>2nd + −</strong> decreases it.</li>
-      </ul>
-
-      <h3 id="m-modes">2. Modes</h3>
-      <p>Press <strong>mode</strong> to choose:</p>
-      <table>
-        <tr><th>Setting</th><th>Options</th><th>Purpose</th></tr>
-        <tr><td>Angle</td><td>DEG, RAD, GRAD</td><td>Controls trig input and output angle units.</td></tr>
-        <tr><td>Notation</td><td>NORM, SCI, ENG</td><td>Controls numeric result display.</td></tr>
-        <tr><td>Decimal</td><td>FLOAT or 0–9</td><td>Controls the number of decimal places shown.</td></tr>
-        <tr><td>Display</td><td>CLASSIC, MATHPRINT</td><td>Classic uses a single-line style; MathPrint uses textbook-style structures.</td></tr>
-      </table>
-      <p><strong>2nd + mode</strong> quits back to the Home screen.</p>
-
-      <h3 id="m-editing">3. Editing, cursor movement, history</h3>
-      <ul>
-        <li>Arrow keys move through the current expression.</li>
-        <li><strong>2nd + left/right</strong> jumps to the beginning/end.</li>
-        <li><strong>delete</strong> deletes at the cursor.</li>
-        <li><strong>2nd + delete</strong> toggles Insert mode.</li>
-        <li><strong>clear</strong> clears the current entry.</li>
-        <li>Up/down navigates stored history when not moving inside a fraction/template.</li>
-      </ul>
-
-      <h3 id="m-fractions">4. Fractions, mixed numbers & percentages</h3>
-      <ul>
-        <li><strong>n/d</strong> inserts a fraction template.</li>
-        <li><strong>2nd + n/d</strong> inserts a mixed-number template.</li>
-        <li><strong>2nd + ×10ⁿ</strong> converts between improper and mixed fraction display when applicable.</li>
-        <li><strong>f↔d</strong> toggles fraction/decimal answers.</li>
-        <li>The white <strong>↔</strong> answer-toggle key also switches exact/decimal forms when available.</li>
-        <li><strong>2nd + (</strong> applies percent <code>%</code>.</li>
-        <li><strong>2nd + )</strong> converts to percent.</li>
-      </ul>
-      <p>Fractions are simplified automatically. Common exact square-root and π forms are preserved in MathPrint when possible.</p>
-
-      <h3 id="m-powers">5. Powers, roots, inverses, logs</h3>
-      <table>
-        <tr><th>Function</th><th>Key</th></tr>
-        <tr><td>Square</td><td>x²</td></tr>
-        <tr><td>Square root</td><td>2nd + x²</td></tr>
-        <tr><td>Power</td><td>^</td></tr>
-        <tr><td>nth root</td><td>2nd + ^</td></tr>
-        <tr><td>Reciprocal</td><td>x⁻¹</td></tr>
-        <tr><td>Common log</td><td>log</td></tr>
-        <tr><td>10ˣ</td><td>2nd + log</td></tr>
-        <tr><td>Natural log</td><td>ln</td></tr>
-        <tr><td>eˣ</td><td>2nd + ln</td></tr>
-        <tr><td>π</td><td>π</td></tr>
-        <tr><td>Scientific notation entry</td><td>×10ⁿ</td></tr>
-      </table>
-
-      <h3 id="m-trig">6. Trigonometry, hyperbolics & angle tools</h3>
-      <ul>
-        <li><strong>sin, cos, tan</strong> use the active angle mode.</li>
-        <li><strong>2nd + sin/cos/tan</strong> gives inverse trig.</li>
-        <li><strong>2nd + π</strong> toggles HYP; then use sin/cos/tan for hyperbolic functions.</li>
-        <li>Use <strong>2nd + prb</strong> to open the Angle menu.</li>
-      </ul>
-      <p>The Angle menu includes degree, minute, second, radian, gradian modifiers, DMS conversion, and rectangular/polar coordinate conversion.</p>
-
-      <h3 id="m-prob">7. Probability & random numbers</h3>
-      <p>Press <strong>prb</strong> for:</p>
-      <ul>
-        <li><strong>nPr</strong> permutations</li>
-        <li><strong>nCr</strong> combinations</li>
-        <li><strong>!</strong> factorial</li>
-        <li><strong>RAND</strong> submenu with <code>rand</code> and <code>randint(</code></li>
-      </ul>
-      <p>You can store a nonnegative integer seed to <code>rand</code> from the Store menu to make the browser's random sequence repeatable.</p>
-
-      <h3 id="m-stats">8. DATA editor & statistics</h3>
-      <p>Press <strong>data</strong> to edit L1, L2, and L3. Each list can hold up to 42 items. The editor includes individual list clearing, Clear ALL, and formula controls.</p>
-      <p>Press <strong>2nd + data</strong> for STATS:</p>
-      <ul>
-        <li><strong>1-Var Stats</strong>: n, x̄, Sx, σx, Σx, Σx², MinX, Q1, Med, Q3, MaxX.</li>
-        <li><strong>2-Var Stats</strong>: x/y means, sample/population deviations, sums, Σxy, linear-regression slope a, intercept b, correlation r, and prediction tools.</li>
-        <li><strong>StatVars</strong> appears after a statistics calculation.</li>
-      </ul>
-
-      <h3 id="m-table">9. Function table</h3>
-      <p>Press <strong>table</strong> to define a function in x.</p>
-      <ul>
-        <li><strong>Start</strong> sets the first x value.</li>
-        <li><strong>Step</strong> sets the increment and cannot be 0.</li>
-        <li><strong>Auto</strong> generates a series automatically.</li>
-        <li><strong>Ask-x</strong> lets you enter specific x values manually.</li>
-      </ul>
-
-      <h3 id="m-k">10. Constant K</h3>
-      <p>Press <strong>2nd + ÷</strong> to define Constant K. Enter an operation such as <code>*2+3</code>. After K is enabled, pressing ENTER applies the stored operation to the current entry or last answer. Use the K menu again to turn it off or change it.</p>
-
-      <h3 id="m-memory">11. Variables, Ans, Store & Recall</h3>
-      <ul>
-        <li>The calculator has variables x, y, z, t, a, b, c.</li>
-        <li><strong>vars</strong> inserts a variable.</li>
-        <li><strong>2nd + vars</strong> opens Clear Var.</li>
-        <li><strong>sto→</strong> stores the current answer.</li>
-        <li><strong>2nd + sto→</strong> opens Recall Var.</li>
-        <li><strong>2nd + (−)</strong> inserts Ans.</li>
-        <li><strong>2nd + 0</strong> opens Reset.</li>
-      </ul>
-
-      <h3 id="m-errors">12. Common errors</h3>
-      <table>
-        <tr><th>Error</th><th>Meaning</th></tr>
-        <tr><td>DIVIDE BY 0</td><td>Division by zero.</td></tr>
-        <tr><td>DOMAIN</td><td>An input is outside the allowed domain, such as √(-1), log(0), invalid inverse trig input, or invalid factorial/permutation input.</td></tr>
-        <tr><td>SYNTAX</td><td>The expression or function arguments are malformed.</td></tr>
-        <tr><td>STAT</td><td>Statistical data is missing or inconsistent.</td></tr>
-        <tr><td>FRQ DOMAIN</td><td>A frequency is outside the accepted range.</td></tr>
-        <tr><td>DIM MISMATCH</td><td>List/formula dimensions do not match.</td></tr>
-        <tr><td>FORMULA</td><td>A list formula is invalid or circular.</td></tr>
-        <tr><td>INVALID FUNCTION</td><td>The function table expression is invalid.</td></tr>
-        <tr><td>MEMORY LIMIT</td><td>An operation exceeds a supported size/limit.</td></tr>
-      </table>
-
-      <h3>13. Browser-only extras</h3>
-      <ul>
-        <li>Size controls from 50% to 125%.</li>
-        <li>Multiple visual skins.</li>
-        <li>Keyboard input support.</li>
-        <li>The manual you are reading is built directly into this HTML file.</li>
-      </ul>
-
-      <div class="manual-note"><strong>Compatibility note:</strong> This is a browser implementation based on documented TI-30XS behavior. It is not a cycle-accurate hardware emulator, so some internal details such as the exact physical calculator random-number sequence may differ.</div>
-    </div>
-  </section>
-</div>
 
 </body>
 </html>
