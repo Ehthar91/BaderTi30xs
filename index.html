@@ -71,6 +71,15 @@ button{touch-action:manipulation}
   font-weight:760;padding:0 26px 0 8px;cursor:pointer;outline:none;
 }
 .resize-controls select:focus-visible,.resize-controls button:focus-visible{outline:3px solid #9ec9ff;outline-offset:2px}
+.manual-top-btn{
+  width:auto!important;
+  min-width:72px;
+  padding:0 12px!important;
+  font-size:13px!important;
+  line-height:1!important;
+  white-space:nowrap;
+}
+
 .calc{zoom:var(--calc-scale,.75)}
 .calc{
   position:relative;width:min(536px,100%);
@@ -256,6 +265,8 @@ button{touch-action:manipulation}
       <option value="light-classroom">Light Classroom</option>
       <option value="wooden">Wooden</option>
     </select>
+    <span class="divider" aria-hidden="true"></span>
+    <button type="button" id="manualBtn" class="manual-top-btn" title="Open user manual" aria-label="Open user manual">Manual</button>
   </div>
 <div class="calc">
   <div class="brand"><div class="name">Bader</div><div class="model">TI-30XS<span class="science">MultiView</span></div></div>
