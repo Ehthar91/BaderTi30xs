@@ -550,7 +550,47 @@ function moveEnd(){st.cursor.path=[];st.cursor.index=st.root.length;render()}
 function moveDown(){const p=parentInfo();if(p&&p.node.type==='frac'&&p.last.slot==='num'){st.cursor.path[st.cursor.path.length-1].slot='den';st.cursor.index=Math.min(st.cursor.index,p.node.den.length);render();return}if(p&&p.node.type==='mixed'&&p.last.slot==='unit'){st.cursor.path[st.cursor.path.length-1].slot='num';st.cursor.index=Math.min(st.cursor.index,p.node.num.length);render();return}if(p&&p.node.type==='mixed'&&p.last.slot==='num'){st.cursor.path[st.cursor.path.length-1].slot='den';st.cursor.index=Math.min(st.cursor.index,p.node.den.length);render();return}historyStep(1)}
 function moveUp(){const p=parentInfo();if(p&&p.node.type==='frac'&&p.last.slot==='den'){st.cursor.path[st.cursor.path.length-1].slot='num';st.cursor.index=Math.min(st.cursor.index,p.node.num.length);render();return}if(p&&p.node.type==='mixed'&&p.last.slot==='den'){st.cursor.path[st.cursor.path.length-1].slot='num';st.cursor.index=Math.min(st.cursor.index,p.node.num.length);render();return}if(p&&p.node.type==='mixed'&&p.last.slot==='num'){st.cursor.path[st.cursor.path.length-1].slot='unit';st.cursor.index=Math.min(st.cursor.index,p.node.unit.length);render();return}historyStep(-1)}
 function backspace(){const s=seqAt();if(st.cursor.index>0){s.splice(st.cursor.index-1,1);st.cursor.index--;st.result='';render();return}if(exitContainer()){backspace();return}}
-function del(){const s=seqAt();if(st.cursor.index<s.length){s.splice(st.cursor.index,1);st.result='';render();return}if(exitContainer()){del();return}}
+function del(){
+  const s=seqAt();
+
+  // TI-style delete behavior:
+  // 1) If a character/node is under the cursor, delete it.
+  if(st.cursor.index<s.length){
+    s.splice(st.cursor.index,1);
+    st.result='';
+    render();
+    return
+  }
+
+  // 2) If the cursor is at the end of the current entry/container,
+  //    delete the character/node immediately to the left.
+  //    This makes the calculator's DELETE key useful immediately
+  //    after typing, matching the physical-calculator editing feel.
+  if(st.cursor.index>0){
+    s.splice(st.cursor.index-1,1);
+    st.cursor.index--;
+    st.result='';
+    render();
+    return
+  }
+
+  // 3) If we're at the beginning of an empty structured field,
+  //    remove the containing structure from its parent.
+  const p=parentInfo();
+  if(p){
+    st.cursor.path=p.parentPath;
+    st.cursor.index=p.last.i;
+    const parentSeq=seqAt();
+    if(st.cursor.index<parentSeq.length){
+      parentSeq.splice(st.cursor.index,1);
+    }
+    st.result='';
+    render();
+    return
+  }
+
+  render()
+}
 function clearEntry(){st.root=[];st.cursor={path:[],index:0};st.result='';st.histIndex=-1;render()}
 function historyStep(dir){if(!st.history.length)return;let i=st.histIndex<0?st.history.length:(st.histIndex);i=Math.max(0,Math.min(st.history.length-1,i+dir));st.histIndex=i;const h=st.history[i];st.root=clone(h.root);st.cursor={path:[],index:st.root.length};st.result='';render()}
 function render(){
@@ -954,7 +994,7 @@ document.addEventListener('keydown',e=>{if(menu.classList.contains('show')){
   if(e.key==='Escape'||e.key==='Backspace'||e.key==='Delete'){hideMenu();e.preventDefault();return}
   return
 }if(e.key==='Backspace'){backspace();resetAPD();e.preventDefault();return}const map={Enter:'enter',Delete:'delete',ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down','*':'×','/':'÷','-':'−','+':'+','(':'(',')':')','.':'.'};if(/^\d$/.test(e.key)){doKey(e.key);e.preventDefault()}else if(map[e.key]){const k=map[e.key];if(['left','right','up','down'].includes(k))({left:moveLeft,right:moveRight,up:moveUp,down:moveDown})[k]();else doKey(k);e.preventDefault()}});
-// Bader TI-30XS v23: manual popup initialization fixed; manual markup now loads before calculator script.
+// Bader TI-30XS v24: DELETE key editing fixed; end-of-entry DELETE now removes the previous character/node.
 
 const manualBtn=document.getElementById('manualBtn');
 const manualOverlay=document.getElementById('manualOverlay');
